@@ -36,8 +36,10 @@ static bool	has_anons_inside(int from, int till, char **argv)
 
 bool	anon(t_tree *node, size_t argc)
 {
-	if (argc == 1 && node->argv[0][0] == ANON && node->argv[0][1] == '\0')
+	if (argc == 1 && node->argv[0][0] == ANON && node->argv[0][1] == '\0' && !node->red)
 		return (true);
+	if (node->red)
+		return (false);
 	if (!has_anons_inside(0, argc - 1, node->argv))
 		return (false);
 	node->argv = terminate_inside_anons(node->argv);
