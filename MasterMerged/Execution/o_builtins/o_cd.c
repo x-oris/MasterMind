@@ -65,17 +65,16 @@ static int	op_dir(t_tree *node, t_data *data, int *x)
 	DIR		*dir;
 	char	*tmp;
 
-	tmp = ft_substr(data->pwd_reserve, 0,
-			get_last_slash(data->pwd_reserve, 1) + 1);
+	tmp = allocate_gc(ft_substr(data->pwd_reserve, 0,
+			get_last_slash(data->pwd_reserve, 1) + 1)); // zdt hada lgc
 	dir = opendir(tmp);
 	if (!dir)
 		return (puterror("Master@Mind: Permission Denied\n"),
-			free(tmp), data->exit_status = 1, EXIT_FAILURE);
+			data->exit_status = 1, EXIT_FAILURE); // hna as well
 	else
 	{
 		closedir(dir);
-		free(node->argv[1]);
-		node->argv[1] = tmp;
+		node->argv[1] = tmp; //argv deja f gc mab9itch kanrreei temp
 		*x = 1;
 		chdir(node->argv[1]);
 		data->unreach = true;
