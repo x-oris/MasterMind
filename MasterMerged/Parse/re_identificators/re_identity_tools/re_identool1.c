@@ -74,7 +74,7 @@ t_token	*re_builder(t_token *id_class)
 	}
 	if (!redirection_sys(&re_built) || !arg_system(re_built))
 		return (all_cleaner(&id_class, &re_built), NULL);
-	debbuger_tk(re_built);
+	// debbuger_tk(re_built); // commented this. 14:03 ouss
 	clean_id_class(&id_class, CLEAN);
 	return (re_built);
 }

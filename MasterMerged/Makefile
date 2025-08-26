@@ -56,9 +56,9 @@ SRC = Parse/minishell.c Parse/identificators/identity_tools/identool0.c\
 	 	Execution/tree_executers/merge_utils/merge_env.c \
 	 	Execution/tree_executers/merge_utils/merge_env_utils.c \
 	 	Execution/o_builtins/builtin_utils.c 					\
-	 	Execution/expansion/expand_arglist.c 	Execution/expansion/expand_key.c 		\
+	 	Execution/expansion/expand_key.c 		\
 	 	Execution/expansion/join_system.c 	Execution/expansion/merge_arglist.c 		\
-	 	Execution/expansion/pocket_expantion.c 	Execution/expansion/pocket_insertion.c \
+	 	Execution/expansion/pocket_expantion.c \
 	 	Execution/expansion/expansion_utils.c 	Execution/tree_executers/last_exec.c 	\
 	 	Execution/expansion/split_ifs.c 												\
 	 	Execution/expansion/internal_field_seperator_pass.c 							\

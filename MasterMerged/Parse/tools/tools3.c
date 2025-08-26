@@ -28,6 +28,7 @@ static void	init_data_tt(t_data *data)
 	data->here_read_fd = -1;
 	data->child_state = false;
 	data->here_int = false;
+	data->in_pipeline = false;
 }
 
 void	init_data_struct(t_data *data, char **env)

@@ -292,6 +292,7 @@ typedef struct s_data
 	bool			here_int;
 	bool			bug;
 	int				here_node;
+	bool			in_pipeline;
 }	t_data;
 
 // Linked List To Store Each Entity
@@ -338,6 +339,21 @@ typedef struct s_ff
 	int				i;
 	DIR				*dir;
 }	t_ff;
+
+typedef struct s_expand_node
+{
+    char                *string;
+    struct s_expand_node *next;
+}	t_expand_node;
+
+typedef struct s_sc
+{
+	char	**split_result;
+	t_arg	*head;
+	t_arg	*current;
+	t_arg	*new_node;
+	int		i;
+}	t_sc;
 
 //TOREMOVE
 void debbuger_tk(t_token *id_class);
@@ -691,6 +707,9 @@ int					should_join(char *curr, char *next);
 int					is_alphanum_underscore(char c);
 char				*o_ft_strtrim(char *s, char *set);
 char				*o_ft_strjoin(char *s1, char *s2);
+t_expand_node		*create_node(char *string);
+void				add_node_back(t_expand_node **head, t_expand_node *new_node);
+int					list_strlen(t_expand_node *head)
 
 // Anon system.
 bool				anon(t_tree *node, size_t argc);

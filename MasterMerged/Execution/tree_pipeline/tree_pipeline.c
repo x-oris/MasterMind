@@ -29,8 +29,9 @@ static bool	check_is_pipe(t_plist *curr)
 	return (false);
 }
 
-static void	init_pipe_data(t_pp *p, t_tree *root, int input_fd)
+static void	init_pipe_data(t_pp *p, t_tree *root, int input_fd, t_data *data)
 {
+	data->in_pipeline = true;
 	p->info.prev_fd = input_fd;
 	p->plist = NULL;
 	flatten_pipeline(root, &p->plist);
@@ -49,7 +50,7 @@ int	execute_pipeline(t_tree *root, t_data *data, int input_fd)
 {
 	t_pp	p;
 
-	init_pipe_data(&p, root, input_fd);
+	init_pipe_data(&p, root, input_fd, data);
 	while (p.curr)
 	{
 		p.info.is_pipe = check_is_pipe(p.curr);
@@ -70,5 +71,6 @@ int	execute_pipeline(t_tree *root, t_data *data, int input_fd)
 	if (p.info.prev_fd != STDIN_FILENO && p.info.prev_fd != -1)
 		close(p.info.prev_fd);
 	p.ret = wait_for_last_pid(p.last_pid);
+	data->in_pipeline = false;
 	return (pipe_sighandle(), data->child_state = false, p.ret);
 }

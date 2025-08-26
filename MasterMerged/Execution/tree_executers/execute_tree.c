@@ -33,14 +33,6 @@ static int	exec_command(t_tree *node, t_data *data)
 		if (add_last_executed(node, data) != EXIT_SUCCESS)
 			return (restore_io(data, node->red == NULL), EXIT_FAILURE);
 		node->argv = remove_nonprintables_argv(node->argv);
-		if (node->argv == NULL)
-		{
-			puts("NULL argv");
-			if (node->argv == NULL && node->argv[0] == NULL)
-			{
-				puts("empty set");
-			}
-		}
 		if (validate_builtin(node->argv[0]))
 			data->exit_status = exec_builtin(node, data);
 		else
