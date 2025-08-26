@@ -6,7 +6,7 @@
 /*   By: ayel-bou <ayel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 03:32:22 by ayel-bou          #+#    #+#             */
-/*   Updated: 2025/08/23 05:34:32 by ayel-bou         ###   ########.fr       */
+/*   Updated: 2025/08/26 05:37:24 by ayel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -338,6 +338,9 @@ typedef struct s_ff
 	int				i;
 	DIR				*dir;
 }	t_ff;
+
+//TOREMOVE
+void debbuger_tk(t_token *id_class);
 
 // Signal Tools
 void				sig_handler(int signum);

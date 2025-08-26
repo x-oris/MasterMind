@@ -6,7 +6,7 @@
 /*   By: ayel-bou <ayel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 15:16:04 by oimzilen          #+#    #+#             */
-/*   Updated: 2025/08/19 19:25:01 by ayel-bou         ###   ########.fr       */
+/*   Updated: 2025/08/26 02:20:07 by ayel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	o_unset(t_tree *node, t_data *data)
 	data->unset_status = false;
 	argc = arg_count(node->argv);
 	if (argc == 1)
-		return (EXIT_SUCCESS);
+		return (data->exit_status = 0, EXIT_SUCCESS);
 	i = 1;
 	while (node->argv[i])
 	{

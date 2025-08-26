@@ -6,7 +6,7 @@
 /*   By: ayel-bou <ayel-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 02:28:08 by ayel-bou          #+#    #+#             */
-/*   Updated: 2025/08/22 23:28:08 by ayel-bou         ###   ########.fr       */
+/*   Updated: 2025/08/26 05:38:02 by ayel-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_tree	*build_tree(t_token *id_class, t_data *data)
 
 	tree = NULL;
 	yard = NULL;
+	// debbuger_tk(id_class);
 	if (id_class == NULL)
 		return (NULL);
 	yard = shunting_yard_algorithm(id_class, data);
