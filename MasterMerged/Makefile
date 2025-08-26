@@ -76,7 +76,7 @@ SRC = Parse/minishell.c Parse/identificators/identity_tools/identool0.c\
 	 	Execution/mind_allocater/mind_allocater_utils.c 	Execution/o_builtins/unset_tools/unsett2.c \
 		Execution/mind_allocater/gc_env_vec.c Execution/tree_executers/data_io_clean.c \
 		Execution/expansio_nova/expansio_nova.c Execution/expansio_nova/expansio_utils.c \
-		Execution/expansio_nova/expansio_utils2.c \
+		Execution/expansio_nova/expansio_utils2.c Execution/expansio_nova/expansio_helpers.c \
 
 		
 OBJ = $(SRC:.c=.o)

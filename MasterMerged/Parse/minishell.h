@@ -709,7 +709,7 @@ char				*o_ft_strtrim(char *s, char *set);
 char				*o_ft_strjoin(char *s1, char *s2);
 t_expand_node		*create_node(char *string);
 void				add_node_back(t_expand_node **head, t_expand_node *new_node);
-int					list_strlen(t_expand_node *head)
+int					list_strlen(t_expand_node *head);
 
 // Anon system.
 bool				anon(t_tree *node, size_t argc);
