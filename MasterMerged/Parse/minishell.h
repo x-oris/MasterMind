@@ -321,6 +321,7 @@ typedef struct s_token
 	bool			here_document_act;
 	bool			del_fd;
 	bool			fake;
+	bool			next_del;
 	bool			cmd_up_next;
 	bool			cmd_added;
 	bool			alre_doc;
@@ -463,6 +464,7 @@ char				*get_delimiter(t_token *token);
 int					get_here_times(t_token *id_class);
 void				cpy_to_file(char *in, t_data *data);
 void				get_quotes_state(t_token *delimiter);
+t_token 			*get_reserve_del(t_token *curr);
 int					store_fd(t_token *id_class, t_data *data);
 int					change_id(t_token *next_heredoc, t_data *data);
 int					sef_doc(t_token *token, t_data *data);
@@ -478,9 +480,10 @@ void				init_properties(t_token *new);
 t_token				*re_builder(t_token *id_class);
 int					fake_system(t_token *id_class);
 t_token				*re_identity(t_token *id_class);
+int					join_redirections(t_token **id_class);
 void				cmd_arg(t_token **curr, int *string);
 void				identify_argument(t_token **id_class);
-void				re_identifications(t_token *curr);
+int					re_identifications(t_token *curr);
 
 // MasterMind System
 int					red_checks(t_token *curr);

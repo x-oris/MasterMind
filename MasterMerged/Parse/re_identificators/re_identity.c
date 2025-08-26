@@ -77,13 +77,12 @@ t_token	*re_identity(t_token *id_class)
 		if (curr->tok == PIPE_ID || curr->tok == OR_ID
 			|| curr->tok == AND_ID)
 			string = 0;
-		re_identifications(curr);
+		if (!re_identifications(curr))
+			return (clean_id_class(&id_class, FAIL), NULL);
 		cmd_arg(&curr, &string);
 		curr = curr->next;
 	}
-	// Join Redirections	
 	if (!fake_system(id_class))
 		return (clean_id_class(&id_class, FAIL), NULL);
-	// debbuger_tk(id_class);
 	return (re_builder(id_class));
 }

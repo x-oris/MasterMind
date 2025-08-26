@@ -33,7 +33,7 @@ void	set_free(t_token *curr)
 		free(curr->identity);
 		free(temp);
 		temp = curr;
-		if (!curr->next)
+		if (!curr->next || curr->next->next_del == false)
 		{
 			free(temp);
 			temp = NULL;
@@ -54,8 +54,8 @@ static void	free_nodes_del(t_token *delimiter, char *del_join)
 	get_quotes_state(delimiter);
 	if (check_con(after_delimiter))
 	{
+		delimiter->next = get_reserve_del(delimiter);
 		set_free(after_delimiter);
-		delimiter->next = NULL;
 	}
 }
 
@@ -101,11 +101,13 @@ int	delimiter_next(t_token *next_heredoc, t_data *data)
 		return (0);
 	while (next_heredoc)
 	{
+		next_heredoc->next_del = false;
 		if (!takeoff_quotes(next_heredoc))
 			return (data->fail = true, free(del_join), 0);
 		del_join = join_delimiter(del_join, next_heredoc, index);
 		if (!del_join)
 			return (data->fail = true, 0);
+		next_heredoc->next_del = true;
 		if (next_heredoc->space_next == true
 			|| (next_heredoc->next && !check_con(next_heredoc->next)))
 			break ;

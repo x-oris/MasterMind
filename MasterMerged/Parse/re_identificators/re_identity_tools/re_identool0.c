@@ -49,86 +49,28 @@ void	cmd_arg(t_token **curr, int *string)
 	}
 }
 
-static void	takeoff_red(t_token *res)
-{
-	t_token *curr;
-	t_token *tmp;
-	t_token *reserve;
 
-	tmp = NULL;
-	curr = res->next;
-	reserve = res;
-	while (curr)
-	{
-		free(tmp);
-		tmp = curr;
-		if (curr->next == NULL)
-		{
-			free(tmp);
-			reserve->next = NULL;
-			break ;
-		}
-		if (curr->next->op_case || curr->space_next == true)
-		{
-			reserve->next = curr->next;
-			free(tmp);
-			break ;
-		}
-		curr = curr->next;
-	}
-}
-
-// STILL NEED WORK
-static t_token	*red_join(t_token *curr)
-{
-	char *tmp;
-	t_token *reserve;
-
-	tmp = NULL;
-	reserve = curr;
-	while (curr->space_next == false && curr->next
-		&& !curr->next->op_case)
-	{
-		tmp = reserve->identity;
-		reserve->identity = ft_strjoin(reserve->identity, curr->next->identity);
-		if (!reserve->identity)
-			return (NULL);
-		free(tmp);
-		curr = curr->next;
-	}
-	takeoff_red(reserve);
-	return (reserve);
-}
-
-static int	join_redirections(t_token **id_class)
-{
-	t_token *curr;
-
-	curr = *id_class;
-	curr = red_join(curr);
-	if (curr == NULL)
-		return (0);
-	return (1);
-}	
-
-// NEED TO RETURN PROTECTION && TEST FOR LEAKS && OVERALL CHECKING OF BEHAVIOR
-void	re_identifications(t_token *curr)
+int	re_identifications(t_token *curr)
 {
 	if (curr->tok == RED_IN_ID)
 	{
 		curr->next->tok = INPUT_FILE_ID;
-		join_redirections(&curr->next);
+		if (!join_redirections(&curr->next))
+			return (0);
 	}
 	else if (curr->tok == RED_OUT_ID)
 	{
 		curr->next->tok = OUTPUT_FILE_ID;
-		join_redirections(&curr->next);
+		if (!join_redirections(&curr->next))
+			return (0);
 	}
 	else if (curr->tok == RED_APP_ID)
 	{
 		curr->next->tok = INPUT_APP_FILE_ID;
-		join_redirections(&curr->next);
+		if (!join_redirections(&curr->next))
+			return (0);
 	}
+	return (1);
 }
 
 void	check_set_cmd(t_token **curr, t_token **id_class)

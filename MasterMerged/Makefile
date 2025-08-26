@@ -1,6 +1,6 @@
 CC = cc 
 SANITIZE= -fsanitize=address -g3
-CFLAG = -I$(READLINE_DIR)/include #-Wall -Wextra -Werror
+CFLAG = -I$(READLINE_DIR)/include -Wall -Wextra -Werror
 READLINE_DIR := lib/readline/install
 LDFLAGS += -L$(READLINE_DIR)/lib -lreadline -lhistory -lncurses
 H = Parse/minishell.h 
@@ -35,7 +35,7 @@ SRC = Parse/minishell.c Parse/identificators/identity_tools/identool0.c\
 		Parse/mastermind/system_mind0.c Parse/mastermind/system_mind1.c\
 		Parse/mastermind/mind_tools/mind_tools1.c\
 		Parse/mastermind/mind_tools/mind_tools2.c Parse/mastermind/mind_tools/mind_tools3.c \
-		Parse/tools/tools10.c Parse/tools/tools11.c\
+		Parse/tools/tools10.c Parse/tools/tools11.c Parse/tools/tools12.c\
 		\
 		\
 	 	Execution/o_builtins/unset_tools/unsett.c\
