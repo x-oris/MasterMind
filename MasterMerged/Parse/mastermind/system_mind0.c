@@ -19,7 +19,6 @@ t_tree	*build_tree(t_token *id_class, t_data *data)
 
 	tree = NULL;
 	yard = NULL;
-	// debbuger_tk(id_class);
 	if (id_class == NULL)
 		return (NULL);
 	yard = shunting_yard_algorithm(id_class, data);

@@ -49,7 +49,6 @@ void	cmd_arg(t_token **curr, int *string)
 	}
 }
 
-
 int	re_identifications(t_token *curr)
 {
 	if (curr->tok == RED_IN_ID)

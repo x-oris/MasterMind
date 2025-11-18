@@ -12,20 +12,6 @@
 
 #include "../../Parse/minishell.h"
 
-static int	anon_index(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == ANON)
-			return (i);
-		i++;
-	}
-	return (i);
-}
-
 bool	single_anon(char *str)
 {
 	if (str[0] == ANON && str[1] == '\0')
@@ -37,14 +23,6 @@ static void	init_terminator(t_ifs **args, int *i)
 {
 	*args = NULL;
 	*i = 0;
-}
-
-static char	*trim_anon_free(char *str)
-{
-	char	*cut;
-
-	cut = allocate_gc(ft_substr(str, anon_index(str) + 1, o_ft_strlen(str)));
-	return (cut);
 }
 
 char	**terminate_inside_anons(char **argv)

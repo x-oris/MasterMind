@@ -44,7 +44,7 @@ char	**convert_list_to_argv(t_arg *arg, t_data *data)
 {
 	t_convert	cv;
 
-	if (expand_list_new(arg, data) != EXIT_SUCCESS) // this is the function i use the data struct to acces env list. 
+	if (expand_list_new(arg, data) != EXIT_SUCCESS)
 		return (NULL);
 	cv.argc = arglist_size(arg);
 	cv.argv = allocate_gc(malloc((cv.argc + 1) * sizeof(char *)));

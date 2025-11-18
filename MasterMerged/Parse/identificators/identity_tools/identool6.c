@@ -96,8 +96,7 @@ int	delimiter_next(t_token *next_heredoc, t_data *data)
 	index = 0;
 	del_join = NULL;
 	delimiter = next_heredoc;
-	if (next_heredoc->next == NULL
-		|| next_heredoc->space_next == true)
+	if (next_heredoc->next == NULL || next_heredoc->space_next == true)
 		return (0);
 	while (next_heredoc)
 	{

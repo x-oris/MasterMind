@@ -101,7 +101,7 @@ int	exec_node(t_tree *node, t_data *data)
 	pid_t	id;
 	int		ex_status;
 
-	if (node->fake == true ) // maybe fix the non expandable red to not happen (node->argv && ft_strchr(node->argv[0], ANON))
+	if (node->fake == true)
 		return (EXIT_SUCCESS);
 	if (data->here_int == true)
 		return (data->here_int = false, EXIT_SUCCESS);

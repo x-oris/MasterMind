@@ -343,8 +343,8 @@ typedef struct s_ff
 
 typedef struct s_expand_node
 {
-    char                *string;
-    struct s_expand_node *next;
+	char					*string;
+	struct s_expand_node	*next;
 }	t_expand_node;
 
 typedef struct s_sc
@@ -355,9 +355,6 @@ typedef struct s_sc
 	t_arg	*new_node;
 	int		i;
 }	t_sc;
-
-//TOREMOVE
-void debbuger_tk(t_token *id_class);
 
 // Signal Tools
 void				sig_handler(int signum);
@@ -464,7 +461,7 @@ char				*get_delimiter(t_token *token);
 int					get_here_times(t_token *id_class);
 void				cpy_to_file(char *in, t_data *data);
 void				get_quotes_state(t_token *delimiter);
-t_token 			*get_reserve_del(t_token *curr);
+t_token				*get_reserve_del(t_token *curr);
 int					store_fd(t_token *id_class, t_data *data);
 int					change_id(t_token *next_heredoc, t_data *data);
 int					sef_doc(t_token *token, t_data *data);
@@ -681,10 +678,11 @@ char				*expand_var(char *str, t_data *data, bool was_d_quoted);
 char				**convert_list_to_argv(t_arg *arg, t_data *data);
 int					pocket_insertion(char **pockets, char *str,
 						t_data *data, bool was_d_quoted);
-int	expand_list_new(t_arg *arg, t_data *data);
+int					expand_list_new(t_arg *arg, t_data *data);
 char				*find_in_env(t_envlist *envlist, char *key);
 char				*expand_double_quoted(char *str, t_data *data);
-t_arg				*split_and_create_nodes(char *expanded_value, t_arg *original_arg);
+t_arg				*split_and_create_nodes(char *expanded_value,
+						t_arg *original_arg);
 
 // Expansion Utils.
 char				*expand_key_wrapper(char *str, t_data *data);
@@ -711,7 +709,8 @@ int					is_alphanum_underscore(char c);
 char				*o_ft_strtrim(char *s, char *set);
 char				*o_ft_strjoin(char *s1, char *s2);
 t_expand_node		*create_node(char *string);
-void				add_node_back(t_expand_node **head, t_expand_node *new_node);
+void				add_node_back(t_expand_node **head,
+						t_expand_node *new_node);
 int					list_strlen(t_expand_node *head);
 
 // Anon system.

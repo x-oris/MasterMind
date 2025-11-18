@@ -12,6 +12,26 @@
 
 #include "../../minishell.h"
 
+static	void	set_free_op_field(t_token *curr)
+{
+	t_token	*temp;
+
+	temp = NULL;
+	while (curr)
+	{
+		free(curr->identity);
+		free(temp);
+		temp = curr;
+		if (!curr->next)
+		{
+			free(temp);
+			temp = NULL;
+			break ;
+		}
+		curr = curr->next;
+	}
+}
+
 int	add_all_to_yard(t_token **yard, t_token **op_field)
 {
 	t_token	*in;
@@ -27,7 +47,7 @@ int	add_all_to_yard(t_token **yard, t_token **op_field)
 		add_back_identity(yard, in, D_INIT);
 		curr_op = curr_op->next;
 	}
-	set_free(*op_field);
+	set_free_op_field(*op_field);
 	(*op_field) = NULL;
 	return (F);
 }

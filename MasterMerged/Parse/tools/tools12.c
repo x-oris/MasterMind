@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tools12.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oimzilen <oimzilen@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/26 22:28:18 by oimzilen          #+#    #+#             */
+/*   Updated: 2025/08/26 22:28:18 by oimzilen         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../minishell.h"
 
 static int	takeoff_red(t_token *res)
 {
-	t_token *curr;
-	t_token *tmp;
-	t_token *reserve;
+	t_token	*curr;
+	t_token	*tmp;
+	t_token	*reserve;
 
 	tmp = NULL;
 	curr = res->next;
@@ -25,8 +37,8 @@ static int	takeoff_red(t_token *res)
 
 static t_token	*red_join(t_token *curr)
 {
-	char *tmp;
-	t_token *reserve;
+	char	*tmp;
+	t_token	*reserve;
 
 	tmp = NULL;
 	reserve = curr;
@@ -43,15 +55,15 @@ static t_token	*red_join(t_token *curr)
 			return (NULL);
 		curr = curr->next;
 	}
-	if (reserve->next && !reserve->next->op_case &&
-		!(1 <= reserve->next->tok && reserve->next->tok <= 4))
+	if (reserve->next && !reserve->next->op_case
+		&& !(1 <= reserve->next->tok && reserve->next->tok <= 4))
 		takeoff_red(reserve);
 	return (reserve);
 }
 
 int	join_redirections(t_token **id_class)
 {
-	t_token *curr;
+	t_token	*curr;
 
 	curr = *id_class;
 	curr = red_join(curr);
@@ -60,13 +72,13 @@ int	join_redirections(t_token **id_class)
 	return (1);
 }
 
-t_token *get_reserve_del(t_token *curr)
+t_token	*get_reserve_del(t_token *curr)
 {
-    while (curr)
-    {
-        if (curr->next_del == false)
-            return (curr);
-        curr = curr->next;
-    }
-    return (NULL);
+	while (curr)
+	{
+		if (curr->next_del == false)
+			return (curr);
+		curr = curr->next;
+	}
+	return (NULL);
 }

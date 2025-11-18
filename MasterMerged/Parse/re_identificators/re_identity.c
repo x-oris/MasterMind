@@ -60,7 +60,6 @@ static int	quotes_removal(t_token *id_class)
 	return (F);
 }
 
-
 t_token	*re_identity(t_token *id_class)
 {
 	int		string;
