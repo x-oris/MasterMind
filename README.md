@@ -2,7 +2,7 @@
 ***
 ![Logo](MasterMind/banner/MasterMind.png)
 ***
-**MasterMind**, a minimized shell, interpreting logical operators **&&** with **||** and **Parenthesis** only for prioritization, parsing input, and executing commands, with integrated builtins such as ***echo***, ***export***, ***cd***, ***pwd***, ***env...*** along with expanding enverionment variables.
+**MasterMind**, a minimized shell in **C language**, interpreting logical operators **&&** with **||** and **Parenthesis** only for prioritization, parsing input, and executing commands, with integrated builtins such as ***echo***, ***export***, ***cd***, ***pwd***, ***env...*** along with expanding enverionment variables.
 ***
 
 **Valgo's side in the project:**
